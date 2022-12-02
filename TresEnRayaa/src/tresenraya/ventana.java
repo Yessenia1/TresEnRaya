@@ -51,6 +51,8 @@ public class ventana extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jx = new javax.swing.JLabel();
         jo = new javax.swing.JLabel();
+        jTextField1 = new javax.swing.JTextField();
+        jTextField2 = new javax.swing.JTextField();
         fondo = new javax.swing.JLabel();
         diagonal2 = new javax.swing.JLabel();
         diagonal1 = new javax.swing.JLabel();
@@ -74,6 +76,10 @@ public class ventana extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
+        jLabel6 = new javax.swing.JLabel();
+        jPanel4 = new javax.swing.JPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
 
         fondo1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/earth-from-space_206799488.jpg"))); // NOI18N
 
@@ -83,17 +89,19 @@ public class ventana extends javax.swing.JFrame {
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 30, 390, -1));
 
-        jButton1.setBackground(new java.awt.Color(255, 51, 51));
-        jButton1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jButton1.setBackground(new java.awt.Color(255, 204, 204));
+        jButton1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jButton1.setText("Anular");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 130, -1, -1));
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 120, 90, 80));
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        pnlX.setBackground(new java.awt.Color(255, 204, 204));
+
+        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 51, 51));
         jLabel1.setText("Jugador 1 (X)");
 
@@ -114,9 +122,11 @@ public class ventana extends javax.swing.JFrame {
                 .addContainerGap(19, Short.MAX_VALUE))
         );
 
-        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        pnlO.setBackground(new java.awt.Color(153, 204, 255));
+
+        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(51, 0, 204));
-        jLabel2.setText("JUgador 2 (O)");
+        jLabel2.setText("Jugador 2 (O)");
 
         javax.swing.GroupLayout pnlOLayout = new javax.swing.GroupLayout(pnlO);
         pnlO.setLayout(pnlOLayout);
@@ -132,7 +142,7 @@ public class ventana extends javax.swing.JFrame {
             .addGroup(pnlOLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel2)
-                .addContainerGap(21, Short.MAX_VALUE))
+                .addContainerGap(15, Short.MAX_VALUE))
         );
 
         jx.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
@@ -150,43 +160,49 @@ public class ventana extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(27, 27, 27)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(pnlO, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(pnlX, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(pnlX, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jTextField1))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jx)
+                .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jx, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jo, javax.swing.GroupLayout.Alignment.TRAILING))
-                .addContainerGap())
+                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(pnlO, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jo, javax.swing.GroupLayout.PREFERRED_SIZE, 11, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(8, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(20, 20, 20)
-                        .addComponent(pnlX, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(28, 28, 28)
-                        .addComponent(jx)))
+                        .addComponent(jx))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(20, 20, 20)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(pnlO, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(pnlX, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(29, 29, 29)
+                        .addComponent(jo)))
+                .addGap(14, 14, 14)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 21, Short.MAX_VALUE)
-                        .addComponent(pnlO, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(65, 65, 65))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(30, 30, 30)
-                        .addComponent(jo)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(112, Short.MAX_VALUE))
         );
 
-        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 200, 210, -1));
+        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 450, 350, 230));
         getContentPane().add(fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         diagonal2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/dia2.png"))); // NOI18N
-        getContentPane().add(diagonal2, new org.netbeans.lib.awtextra.AbsoluteConstraints(-20, 110, -1, -1));
+        getContentPane().add(diagonal2, new org.netbeans.lib.awtextra.AbsoluteConstraints(-40, 80, -1, -1));
 
         diagonal1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/dia1.png"))); // NOI18N
-        getContentPane().add(diagonal1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 120, -1, -1));
+        getContentPane().add(diagonal1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 90, -1, -1));
 
         mediover.setBackground(new java.awt.Color(255, 0, 0));
         mediover.setForeground(new java.awt.Color(255, 0, 0));
@@ -202,10 +218,10 @@ public class ventana extends javax.swing.JFrame {
             .addGap(0, 280, Short.MAX_VALUE)
         );
 
-        getContentPane().add(mediover, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 140, -1, -1));
+        getContentPane().add(mediover, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 110, -1, -1));
 
-        derver.setBackground(new java.awt.Color(255, 0, 0));
-        derver.setForeground(new java.awt.Color(255, 0, 0));
+        derver.setBackground(new java.awt.Color(102, 102, 255));
+        derver.setForeground(new java.awt.Color(51, 51, 255));
 
         javax.swing.GroupLayout derverLayout = new javax.swing.GroupLayout(derver);
         derver.setLayout(derverLayout);
@@ -218,7 +234,7 @@ public class ventana extends javax.swing.JFrame {
             .addGap(0, 280, Short.MAX_VALUE)
         );
 
-        getContentPane().add(derver, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 140, -1, -1));
+        getContentPane().add(derver, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 110, -1, -1));
 
         arriba.setBackground(new java.awt.Color(255, 0, 0));
         arriba.setForeground(new java.awt.Color(255, 0, 0));
@@ -234,7 +250,7 @@ public class ventana extends javax.swing.JFrame {
             .addGap(0, 10, Short.MAX_VALUE)
         );
 
-        getContentPane().add(arriba, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 170, -1, -1));
+        getContentPane().add(arriba, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 140, -1, -1));
 
         abajo.setBackground(new java.awt.Color(255, 0, 0));
         abajo.setForeground(new java.awt.Color(255, 0, 0));
@@ -250,7 +266,7 @@ public class ventana extends javax.swing.JFrame {
             .addGap(0, 10, Short.MAX_VALUE)
         );
 
-        getContentPane().add(abajo, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 390, -1, -1));
+        getContentPane().add(abajo, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 360, -1, -1));
 
         mediohor.setBackground(new java.awt.Color(255, 0, 0));
         mediohor.setForeground(new java.awt.Color(255, 0, 0));
@@ -266,7 +282,7 @@ public class ventana extends javax.swing.JFrame {
             .addGap(0, 10, Short.MAX_VALUE)
         );
 
-        getContentPane().add(mediohor, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 270, -1, -1));
+        getContentPane().add(mediohor, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 240, -1, -1));
 
         izqver.setBackground(new java.awt.Color(255, 0, 0));
         izqver.setForeground(new java.awt.Color(255, 0, 0));
@@ -282,7 +298,7 @@ public class ventana extends javax.swing.JFrame {
             .addGap(0, 280, Short.MAX_VALUE)
         );
 
-        getContentPane().add(izqver, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 140, -1, -1));
+        getContentPane().add(izqver, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 110, -1, -1));
 
         b00.setFont(new java.awt.Font("Tahoma", 0, 48)); // NOI18N
         b00.addActionListener(new java.awt.event.ActionListener() {
@@ -290,7 +306,7 @@ public class ventana extends javax.swing.JFrame {
                 b00ActionPerformed(evt);
             }
         });
-        getContentPane().add(b00, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 130, 109, 97));
+        getContentPane().add(b00, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 100, 109, 97));
 
         b01.setFont(new java.awt.Font("Tahoma", 0, 48)); // NOI18N
         b01.addActionListener(new java.awt.event.ActionListener() {
@@ -298,7 +314,7 @@ public class ventana extends javax.swing.JFrame {
                 b01ActionPerformed(evt);
             }
         });
-        getContentPane().add(b01, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 130, 109, 97));
+        getContentPane().add(b01, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 100, 109, 97));
 
         b02.setFont(new java.awt.Font("Tahoma", 0, 48)); // NOI18N
         b02.addActionListener(new java.awt.event.ActionListener() {
@@ -306,7 +322,7 @@ public class ventana extends javax.swing.JFrame {
                 b02ActionPerformed(evt);
             }
         });
-        getContentPane().add(b02, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 130, 109, 97));
+        getContentPane().add(b02, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 100, 109, 97));
 
         b12.setFont(new java.awt.Font("Tahoma", 0, 48)); // NOI18N
         b12.addActionListener(new java.awt.event.ActionListener() {
@@ -314,7 +330,7 @@ public class ventana extends javax.swing.JFrame {
                 b12ActionPerformed(evt);
             }
         });
-        getContentPane().add(b12, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 240, 109, 97));
+        getContentPane().add(b12, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 210, 109, 97));
 
         b11.setFont(new java.awt.Font("Tahoma", 0, 48)); // NOI18N
         b11.addActionListener(new java.awt.event.ActionListener() {
@@ -322,7 +338,7 @@ public class ventana extends javax.swing.JFrame {
                 b11ActionPerformed(evt);
             }
         });
-        getContentPane().add(b11, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 240, 109, 97));
+        getContentPane().add(b11, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 210, 109, 97));
 
         b10.setFont(new java.awt.Font("Tahoma", 0, 48)); // NOI18N
         b10.addActionListener(new java.awt.event.ActionListener() {
@@ -330,7 +346,7 @@ public class ventana extends javax.swing.JFrame {
                 b10ActionPerformed(evt);
             }
         });
-        getContentPane().add(b10, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 240, 109, 97));
+        getContentPane().add(b10, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 210, 109, 97));
 
         b20.setFont(new java.awt.Font("Tahoma", 0, 48)); // NOI18N
         b20.addActionListener(new java.awt.event.ActionListener() {
@@ -338,7 +354,7 @@ public class ventana extends javax.swing.JFrame {
                 b20ActionPerformed(evt);
             }
         });
-        getContentPane().add(b20, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 340, 109, 97));
+        getContentPane().add(b20, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 310, 109, 97));
 
         b21.setFont(new java.awt.Font("Tahoma", 0, 48)); // NOI18N
         b21.addActionListener(new java.awt.event.ActionListener() {
@@ -346,7 +362,7 @@ public class ventana extends javax.swing.JFrame {
                 b21ActionPerformed(evt);
             }
         });
-        getContentPane().add(b21, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 340, 109, 97));
+        getContentPane().add(b21, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 310, 109, 97));
 
         b22.setFont(new java.awt.Font("Tahoma", 0, 48)); // NOI18N
         b22.addActionListener(new java.awt.event.ActionListener() {
@@ -354,7 +370,7 @@ public class ventana extends javax.swing.JFrame {
                 b22ActionPerformed(evt);
             }
         });
-        getContentPane().add(b22, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 340, 109, 97));
+        getContentPane().add(b22, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 310, 109, 97));
 
         jPanel3.setBackground(new java.awt.Color(204, 204, 255));
 
@@ -390,7 +406,7 @@ public class ventana extends javax.swing.JFrame {
 
         getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 790, 80));
 
-        jButton2.setBackground(new java.awt.Color(255, 255, 51));
+        jButton2.setBackground(new java.awt.Color(255, 255, 204));
         jButton2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jButton2.setText("Jugar de Nuevo");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -398,17 +414,63 @@ public class ventana extends javax.swing.JFrame {
                 jButton2ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 170, -1, -1));
+        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 220, 210, 60));
 
-        jButton3.setBackground(new java.awt.Color(51, 255, 51));
-        jButton3.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jButton3.setBackground(new java.awt.Color(204, 255, 204));
+        jButton3.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jButton3.setText("Iniciar");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton3ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 130, -1, -1));
+        getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 120, 100, 80));
+
+        jLabel6.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
+        jLabel6.setText("Turnos:");
+        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 420, -1, -1));
+
+        jPanel4.setBackground(new java.awt.Color(255, 204, 153));
+
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
+            },
+            new String [] {
+                "N Participante", "N Jugador 1", "N Jugador 2", "N Ganador", "Estado"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
+        jScrollPane1.setViewportView(jTable1);
+
+        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
+        jPanel4.setLayout(jPanel4Layout);
+        jPanel4Layout.setHorizontalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 349, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanel4Layout.setVerticalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(25, Short.MAX_VALUE))
+        );
+
+        getContentPane().add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 300, 370, 220));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -540,12 +602,12 @@ juegologica l=new juegologica(0,0,0);
 
 public void turnoar(){
     if(l.getTurno()==1){
-        pnlX.setBackground(Color.yellow);
+        pnlX.setBackground(Color.pink);
         pnlO.setBackground(Color.white);
     }
     if(l.getTurno()==0){
         pnlX.setBackground(Color.white);
-        pnlO.setBackground(Color.yellow);
+        pnlO.setBackground(Color.pink);
     }
 }
 public void reiniciar(){
@@ -639,9 +701,15 @@ public void reiniciar(){
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable jTable1;
+    private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField jTextField2;
     private javax.swing.JLabel jo;
     private javax.swing.JLabel jx;
     private javax.swing.JPanel mediohor;
