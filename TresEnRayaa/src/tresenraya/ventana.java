@@ -6,6 +6,15 @@
 package tresenraya;
 
 import java.awt.Color;
+import java.util.List;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
+import javax.swing.table.TableRowSorter;
+import tresenraya.Modelo.ResultadoTO;
+import tresenraya.dao.ResultadoDAO;
+import tresenraya.dao.ResultadoDaoI;
+import tresenraya.util.MsgBox;
+import tresenraya.util.UtilsX;
 
 /**
  *
@@ -16,6 +25,15 @@ public class ventana extends javax.swing.JFrame {
     /**
      * Creates new form ventana
      */
+    
+    ResultadoDaoI rDao;
+    public static ResultadoTO uTO = new ResultadoTO();
+    DefaultTableModel modelo;
+    MsgBox msg;
+    TableRowSorter<TableModel> trsfiltro;
+    
+    UtilsX obj = new UtilsX();
+    
     public ventana() {
         initComponents();
         llenar();
@@ -51,8 +69,8 @@ public class ventana extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jx = new javax.swing.JLabel();
         jo = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
+        txtJugador1 = new javax.swing.JTextField();
+        txtJugador2 = new javax.swing.JTextField();
         fondo = new javax.swing.JLabel();
         diagonal2 = new javax.swing.JLabel();
         diagonal1 = new javax.swing.JLabel();
@@ -74,12 +92,12 @@ public class ventana extends javax.swing.JFrame {
         jPanel3 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
+        jPanel6 = new javax.swing.JPanel();
 
         fondo1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/earth-from-space_206799488.jpg"))); // NOI18N
 
@@ -97,7 +115,7 @@ public class ventana extends javax.swing.JFrame {
                 jButton1ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 120, 90, 80));
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 240, 170, 50));
 
         pnlX.setBackground(new java.awt.Color(255, 204, 204));
 
@@ -161,12 +179,12 @@ public class ventana extends javax.swing.JFrame {
                 .addGap(27, 27, 27)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(pnlX, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jTextField1))
+                    .addComponent(txtJugador1))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jx)
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtJugador2, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(pnlO, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
@@ -190,14 +208,15 @@ public class ventana extends javax.swing.JFrame {
                         .addComponent(jo)))
                 .addGap(14, 14, 14)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtJugador1, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtJugador2, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(112, Short.MAX_VALUE))
         );
 
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 450, 350, 230));
         getContentPane().add(fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
+        diagonal2.setBackground(new java.awt.Color(153, 153, 153));
         diagonal2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/dia2.png"))); // NOI18N
         getContentPane().add(diagonal2, new org.netbeans.lib.awtextra.AbsoluteConstraints(-40, 80, -1, -1));
 
@@ -406,16 +425,6 @@ public class ventana extends javax.swing.JFrame {
 
         getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 790, 80));
 
-        jButton2.setBackground(new java.awt.Color(255, 255, 204));
-        jButton2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jButton2.setText("Jugar de Nuevo");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
-            }
-        });
-        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 220, 210, 60));
-
         jButton3.setBackground(new java.awt.Color(204, 255, 204));
         jButton3.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jButton3.setText("Iniciar");
@@ -424,7 +433,7 @@ public class ventana extends javax.swing.JFrame {
                 jButton3ActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 120, 100, 80));
+        getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 240, 180, 50));
 
         jLabel6.setFont(new java.awt.Font("Segoe UI", 3, 18)); // NOI18N
         jLabel6.setText("Turnos:");
@@ -434,17 +443,17 @@ public class ventana extends javax.swing.JFrame {
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null}
             },
             new String [] {
-                "N Participante", "N Jugador 1", "N Jugador 2", "N Ganador", "Estado"
+                "N Participante", "id resultados", "N Jugador 1", "N Jugador 2", "N Ganador", "", "Estado"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+                java.lang.String.class, java.lang.Object.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Object.class, java.lang.String.class
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -452,6 +461,11 @@ public class ventana extends javax.swing.JFrame {
             }
         });
         jScrollPane1.setViewportView(jTable1);
+        if (jTable1.getColumnModel().getColumnCount() > 0) {
+            jTable1.getColumnModel().getColumn(1).setMinWidth(0);
+            jTable1.getColumnModel().getColumn(1).setPreferredWidth(0);
+            jTable1.getColumnModel().getColumn(1).setMaxWidth(0);
+        }
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -471,6 +485,21 @@ public class ventana extends javax.swing.JFrame {
         );
 
         getContentPane().add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 300, 370, 220));
+
+        jPanel6.setBackground(new java.awt.Color(255, 204, 204));
+
+        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
+        jPanel6.setLayout(jPanel6Layout);
+        jPanel6Layout.setHorizontalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 380, Short.MAX_VALUE)
+        );
+        jPanel6Layout.setVerticalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 330, Short.MAX_VALUE)
+        );
+
+        getContentPane().add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, 380, 330));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -578,17 +607,69 @@ public class ventana extends javax.swing.JFrame {
         } 
     }//GEN-LAST:event_b10ActionPerformed
 
+    
+    
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         reiniciar();
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
+    
+    public void ListarResultado() {
+        rDao = new ResultadoDAO();
+        List<ResultadoTO> listarResultado = rDao.listarResultado();
+        jTable1.setAutoCreateRowSorter(true);
+        modelo = (DefaultTableModel) jTable1.getModel();
+        modelo.setNumRows(0);
+        Object[] ob = new Object[7];
+        for (int i = 0; i < listarResultado.size(); i++) {
+            ob[0] = listarResultado.get(i).getNombrePartida();
+            ob[1] = listarResultado.get(i).getIdResultado();
+            ob[2] = listarResultado.get(i).getNombreJugador1();
+            ob[3] = listarResultado.get(i).getNombreJugador2();
+            ob[4] = listarResultado.get(i).getGanador();
+            ob[5] = listarResultado.get(i).getPunto();
+            ob[6] = listarResultado.get(i).getEstado();
+            modelo.addRow(ob);
+        }
+        jTable1.setModel(modelo);
+    }
 
+    private void paintForm() {
+        if (jTable1.getSelectedRow() != -1) {
+            modelo = (DefaultTableModel) jTable1.getModel();
+            int rowx = jTable1.getSelectedRow();
+            Object valor = jTable1.getValueAt(rowx, 1);
+            rDao = new ResultadoDAO();
+            ResultadoTO d = rDao.buscarResultado(Integer.parseInt(valor.toString()));
+            
+            txtJugador1.setText(d.getNombreJugador1());
+            txtJugador2.setText(d.getNombreJugador2());
+        } else {
+            int i=0;        }
+    }
+
+    public void resetForm() {
+        txtJugador1.setText("");
+        txtJugador2.setText("");
+        txtJugador1.requestFocus();
+
+    }
+    
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
+        uTO.setNombrePartida("Partida "+ uTO.getIdResultado());
+        uTO.setNombreJugador1(txtJugador1.getText());
+        uTO.setNombreJugador2(txtJugador2.getText());
+        uTO.setGanador("");
+        uTO.setPunto(0);
+        uTO.setEstado("Jugando");
+
+        rDao = new ResultadoDAO();
+
+        int dx = rDao.create(uTO);
+        uTO.setIdResultado(dx);
+        ListarResultado();
     }//GEN-LAST:event_jButton3ActionPerformed
 int matriz[][]=new int[3][3];
 public void llenar(){
@@ -695,7 +776,6 @@ public void reiniciar(){
     private javax.swing.JLabel fondo1;
     private javax.swing.JPanel izqver;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -706,16 +786,17 @@ public void reiniciar(){
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
+    private javax.swing.JPanel jPanel6;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
     private javax.swing.JLabel jo;
     private javax.swing.JLabel jx;
     private javax.swing.JPanel mediohor;
     private javax.swing.JPanel mediover;
     private javax.swing.JPanel pnlO;
     private javax.swing.JPanel pnlX;
+    private javax.swing.JTextField txtJugador1;
+    private javax.swing.JTextField txtJugador2;
     // End of variables declaration//GEN-END:variables
 }
 
